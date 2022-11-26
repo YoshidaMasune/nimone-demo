@@ -1,5 +1,6 @@
 import { Address } from './address.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { User } from './user.entity';
 
 export enum LocationEnum {
    WIHAN =  "วิหาร",
@@ -15,24 +16,27 @@ export class Work {
    @Column()
    workType!: string;
 
-   @Column({ type: "enum", enum: LocationEnum})
+   @Column()
    location!: string;
 
    @OneToOne( () => Address ) @JoinColumn()
    address!: Address;
 
+   @OneToOne( () => User ) @JoinColumn()
+   user!: User;
+
    @Column()
    monk!: number;
 
-   @Column({type: "date"})
-   time!: Date;
+   // @Column({default: new Date})
+   // time!: Date;
 
-   @Column()
+   @Column({default: ''})
    detail!: string;
 
-   @Column()
-   time_edit!: Date;
+   // @Column({default: new Date})
+   // time_edit!: Date;
  
-   @Column()
+   @Column({default: ''})
    user_edit!: string;
 }

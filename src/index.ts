@@ -1,33 +1,38 @@
-import { Address } from './entity/address.entity';
+// import depenencies 
 import express from "express";
-import { application } from "express";
 import { DataSource } from "typeorm";
+import cors from 'cors';
+
+// import typeorm Entity 
+
+import { myAppData } from "./Appdata";
 import { User } from "./entity/user.entity";
+import { Work } from './entity/work.entity';
+import { Address } from './entity/address.entity';
+
+// import routes
 
 import Nimone from './routes/Nimone';
+const repoUser = myAppData.getRepository(User)
 
-const myAppData = new DataSource ({
-   type: 'mysql',
-   host: 'localhost',
-   port: 3306,
-   username: 'root',
-   password: 'Fai@645478',
-   database: 'test',
-   entities: [__dirname + "/entity/*{.js,.ts}"],
-   synchronize: true
-})
+// mian code
 
-const repoUser = myAppData.getRepository(Address)
-const app = express();
-
-function main () {
-   app.get('/', async (req, res) => {
-      const data = await repoUser.find();
-      res.send(data)
-   })
-   app.listen(3000)
+export interface TypedRequestBody<T> extends Express.Request {
+   body: T
 }
 
+function main () {
+   const app = express();
+
+   app.use(express.json())
+   app.use(cors())
+
+   app.use('/api/nimones-all-data', Nimone )
+   app.listen(3000)
+}
+//  ----------------------------------------- //
+
+// conect Database And exicute main() function
 myAppData
 .initialize()
 .then(() => {

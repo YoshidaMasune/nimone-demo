@@ -12,13 +12,13 @@ export class Address {
    @Column()
    Muu_number!: number;
 
-   @Column()
+   @Column({default: ''})
    Khet!: string;
 
-   @Column()
+   @Column({default: ''})
    Ampao!: string;
 
-   @Column()
+   @Column({default: ''})
    city!: string;
 
    @OneToOne ( () => User)

@@ -12,8 +12,8 @@ export class User {
     lastName!: string
 
     @Column()
-    tell!: number
+    tell!: string
 
-    @Column()
-    tell2!: number
+    @Column({default: 0})
+    tell2!: string
 }
