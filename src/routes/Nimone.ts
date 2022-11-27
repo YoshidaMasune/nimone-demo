@@ -10,6 +10,10 @@ import { Address } from '../entity/address.entity';
 import { Work } from '../entity/work.entity';
 const router = Router();
 
+// import middlewares from 
+import {fillterstring} from '../middlewares/middleware'
+import { insertData } from '../controllers/insertData';
+
 router.get('/', async (req, res, next) => {
    const datas = await myAppData.getRepository(Work).find({
       relations: {
@@ -17,42 +21,14 @@ router.get('/', async (req, res, next) => {
          address: true
       }
    })
+
+   const userData = await myAppData.getRepository(User).find()
    res.json(datas);
 });
 
-router.post('/', async (req: TypedRequestBody<Ninome>, res, next) =>  {
-   console.log(req.body);
-   
-   const user =  myAppData.getRepository(User).create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      tell: req.body.tell,
-   })
-   await myAppData.getRepository(User).save(user)
-
-   const address = myAppData.getRepository(Address).create({
-      Home_number: req.body.Home_number,
-      Muu_number: req.body.Muu_number,
-      Khet: req.body.Khet,
-      Ampao: req.body.Ampao,
-      city: req.body.city,
-      user: user
-   })
-
-   await myAppData.getRepository(Address).save(address)
-
-   const work = myAppData.getRepository(Work).create({
-      workType: req.body.workType,
-      location: req.body.location,
-      monk: req.body.monk,
-      address: address,
-      user: user,
-      time: new Date().toDateString(),
-      time_edit: new Date().toDateString()
-   })
-
-   const result = await myAppData.getRepository(Work).save(work)
-   res.send(result);
+router.post('/', fillterstring,  insertData, async (req: TypedRequestBody<Ninome>, res, next) =>  {
+  
+   res.status(200)
 });
 
 export default router;
