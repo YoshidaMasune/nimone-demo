@@ -11,24 +11,21 @@ import { Work } from './entity/work.entity';
 import { Address } from './entity/address.entity';
 
 // import routes
-
 import Nimone from './routes/Nimone';
 const repoUser = myAppData.getRepository(User)
 
 // mian code
-
 export interface TypedRequestBody<T> extends Express.Request {
    body: T
 }
 
 function main () {
    const app = express();
-
    app.use(express.json())
    app.use(cors())
 
-   app.use('/api/nimones-all-data', Nimone )
-   app.listen(3000)
+   app.use('/api/nimones-all-data', Nimone );
+   app.listen(4343)
 }
 //  ----------------------------------------- //
 

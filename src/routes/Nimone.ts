@@ -1,33 +1,26 @@
-import { Ninome } from './../model/nimone.types';
 
 import { Router } from 'express';
 import { TypedRequestBody } from '..';
+import { Ninome } from './../model/nimone.types';
 
-// import Entities 
-import { myAppData } from '../Appdata';
-import { User } from '../entity/user.entity';
-import { Address } from '../entity/address.entity';
-import { Work } from '../entity/work.entity';
 const router = Router();
 
 // import middlewares from 
 import {fillterstring} from '../middlewares/middleware'
-import { insertData } from '../controllers/insertData';
+import { screenningReq } from '../middlewares/screeningRequest';
+import { insertData } from '../controllers/insertData.controller';
+import { queryAll } from '../controllers/queryAll.controller';
+import { queryByUser } from '../controllers/queryQuery.controller';
 
-router.get('/', async (req, res, next) => {
-   const datas = await myAppData.getRepository(Work).find({
-      relations: {
-         user: true,
-         address: true
-      }
-   })
+// main router 
 
-   const userData = await myAppData.getRepository(User).find()
-   res.json(datas);
+router.get('/',queryByUser, queryAll,  async (req, res, next) => {
 });
 
-router.post('/', fillterstring,  insertData, async (req: TypedRequestBody<Ninome>, res, next) =>  {
-  
+router.get('/:UID')
+
+
+router.post('/', fillterstring, insertData, async (req: TypedRequestBody<Ninome>, res, next) =>  {
    res.status(200)
 });
 
