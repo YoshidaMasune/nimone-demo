@@ -46,7 +46,9 @@ router.post('/', async (req: TypedRequestBody<Ninome>, res, next) =>  {
       location: req.body.location,
       monk: req.body.monk,
       address: address,
-      user: user
+      user: user,
+      time: new Date().toDateString(),
+      time_edit: new Date().toDateString()
    })
 
    const result = await myAppData.getRepository(Work).save(work)

@@ -14,6 +14,6 @@ export class User {
     @Column()
     tell!: string
 
-    @Column({default: 0})
+    @Column({nullable: true})
     tell2!: string
 }

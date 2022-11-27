@@ -28,14 +28,14 @@ export class Work {
    @Column()
    monk!: number;
 
-   // @Column({default: new Date})
-   // time!: Date;
+   @Column({nullable: true})
+   time!: Date;
 
    @Column({default: ''})
    detail!: string;
 
-   // @Column({default: new Date})
-   // time_edit!: Date;
+   @Column({nullable: true})
+   time_edit!: Date;
  
    @Column({default: ''})
    user_edit!: string;
