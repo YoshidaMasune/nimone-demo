@@ -11,14 +11,15 @@ import { screenningReq } from '../middlewares/screeningRequest';
 import { insertData } from '../controllers/insertData.controller';
 import { queryAll } from '../controllers/queryAll.controller';
 import { queryByUser } from '../controllers/queryQuery.controller';
+import { bodyQuery } from '../controllers/bodyQuery.controller';
 
 // main router 
 
-router.get('/',queryByUser, queryAll,  async (req, res, next) => {
+
+router.get('/', queryByUser, queryAll, bodyQuery,  async (req, res, next) => {
 });
 
 router.get('/:UID')
-
 
 router.post('/', fillterstring, insertData, async (req: TypedRequestBody<Ninome>, res, next) =>  {
    res.status(200)

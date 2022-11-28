@@ -13,5 +13,11 @@ const fillterstring = (req: Request, res:Response, next:NextFunction) => {
    }
 }
 
+const isBody = (req: Request, res:Response, next:NextFunction) => {
+   if (Object.keys(req.body).length === 0) {
+      
+   }
+}
+
 
 export { fillterstring }

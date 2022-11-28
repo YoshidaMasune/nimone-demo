@@ -25,7 +25,7 @@ function main () {
    app.use(cors())
 
    app.use('/api/nimones-all-data', Nimone );
-   app.listen(4343)
+   app.listen(3000)
 }
 //  ----------------------------------------- //
 

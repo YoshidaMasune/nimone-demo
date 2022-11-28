@@ -2,6 +2,7 @@ import { UserRepository, AddressRepository, WorkRepository } from '../getRepo.ty
 import { Request, Response, NextFunction } from 'express'
 
 export const queryByUser = async (req: Request, res: Response, next: NextFunction) => {
+   const body = req.body;
    if ( Object.keys(req.query).length === 0){
       next()
    }else{
@@ -16,4 +17,8 @@ export const queryByUser = async (req: Request, res: Response, next: NextFunctio
       })
       res.json(data)
    }
+}
+
+export const queryByAddress = async (req: Request, res: Response, next: NextFunction) => {
+
 }
