@@ -12,6 +12,7 @@ import { Address } from './entity/address.entity';
 
 // import routes
 import Nimone from './routes/Nimone';
+import Admin from './routes/Admin'
 const repoUser = myAppData.getRepository(User)
 
 // mian code
@@ -25,6 +26,7 @@ function main () {
    app.use(cors())
 
    app.use('/api/nimones-all-data', Nimone );
+   app.use('/admin', Admin)
    app.listen(3000)
 }
 //  ----------------------------------------- //

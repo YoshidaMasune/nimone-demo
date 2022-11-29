@@ -1,6 +1,6 @@
-import { TypedRequestBody } from '..';
+
 import { Request, Response, NextFunction } from 'express';
-import { Ninome } from '../model/nimone.types';
+
 import { UserRepository, WorkRepository } from '../getRepo.typeorm';
 
 const bodyQuery = async (req: Request, res: Response, next: NextFunction) => {
