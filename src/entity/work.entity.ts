@@ -19,8 +19,8 @@ export class Work {
    @Column()
    location!: string;
 
-   @OneToOne( () => Address ) @JoinColumn()
-   address!: Address;
+   @OneToOne( (type) => Address ) @JoinColumn()
+   address!: Address | null;
 
    @OneToOne( () => User ) @JoinColumn()
    user!: User;

@@ -19,8 +19,6 @@ import { bodyQuery } from '../controllers/bodyQuery.controller';
 router.get('/', queryByUser, queryAll, bodyQuery,  async (req, res, next) => {
 });
 
-router.get('/:UID')
-
 router.post('/', fillterstring, insertData, async (req: TypedRequestBody<Ninome>, res, next) =>  {
    res.status(200)
 });

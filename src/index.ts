@@ -1,3 +1,4 @@
+import { Edit } from './routes/Edit';
 // import depenencies 
 import express from "express";
 import { DataSource } from "typeorm";
@@ -25,6 +26,7 @@ function main () {
    app.use(cors())
 
    app.use('/api/nimones-all-data', Nimone );
+   app.use('/api/edit', Edit)
    app.listen(3000)
 }
 //  ----------------------------------------- //
