@@ -9,7 +9,13 @@ export async function queryAll (req: Request, res: Response, next: NextFunction)
             relations:{
                user: true,
                address: true
-            }
+            },
+            order: {
+               time: 'ASC',
+               user: {
+                  firstName: "ASC"
+               }
+            } 
          })
          res.json(data)
       } catch (error) {
